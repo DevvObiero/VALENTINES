@@ -1,48 +1,79 @@
-const noBtn = document.getElementById("noBtn");
-const parentContainer = document.querySelector(".btnN");
+const quotes = [
+  "The day I met you, I began to forget a life without you",
+  "Every moment with you is a beautiful memory in the making",
+  "You are the reason my world is so bright",
+  "With you, every day feels like a new adventure",
+  "Any day spent with you is my favourite day",
+  "All the better days are thre ones spent with you",
+  "If i had a flower for every time i thought of you",
+  "I'd be walking in a garded of flowers forever",
+  "I find you in every song i listen to",
+  "I fell for you and I an still falling",
+  "I could spend hours lost in your eyes",
+  "May i kiss you scars",
+  "Your presence is the melody that makes my heart sing",
+  "Your presence is the melody that makes my heart sing"
+];
 
-function moveButton() {
-  const parentRect = parentContainer.getBoundingClientRect();
-  const rect = noBtn.getBoundingClientRect();
+let index = 0;
 
-  // Get the center of the parent container
-  const centerX = parentRect.left + parentRect.width / 2;
-  const centerY = parentRect.top + parentRect.height / 2;
-
-  // Generate random positions within a 400px-500px radius
-  let angle = Math.random() * 2 * Math.PI; // Random angle
-  let radius = Math.random() * 100 + 400; // Random distance (between 400px and 500px)
-
-  let newX = centerX + radius * Math.cos(angle) - rect.width / 2;
-  let newY = centerY + radius * Math.sin(angle) - rect.height / 2;
-
-  // Keep the button within a reasonable area
-  newX = Math.max(
-    parentRect.left,
-    Math.min(parentRect.right - rect.width, newX)
-  );
-  newY = Math.max(
-    parentRect.top,
-    Math.min(parentRect.bottom - rect.height, newY)
-  );
-
-  // Apply new position
-  noBtn.style.transform = `translate(${newX - rect.left}px, ${
-    newY - rect.top
-  }px)`;
-  noBtn.style.transition = "transform 0.3s ease-out";
+function changeQuote() {
+  index = (index + 1) % quotes.length;
+  document.getElementById("quote").textContent = quotes[index];
 }
 
-// Move button on mobile touch
-noBtn.addEventListener("touchstart", moveButton);
+setInterval(changeQuote, 5000); // Change every 5 seconds
 
-// Move button when mouse is near on PC
-document.addEventListener("mousemove", (event) => {
-  const rect = noBtn.getBoundingClientRect();
-  const distanceX = Math.abs(event.clientX - (rect.left + rect.width / 2));
-  const distanceY = Math.abs(event.clientY - (rect.top + rect.height / 2));
+setTimeout(() => {
+  const heading = document.querySelector(".change");
+  heading.textContent = "I LOVE YOU";
+}, 3000); // 3000 milliseconds = 3 seconds
 
-  if (distanceX < 50 && distanceY < 50) {
-    moveButton();
-  }
+const noBtn = document.getElementById("noBtn");
+
+function moveButton(maxMove) {
+  let parent = noBtn.parentElement;
+
+  // Generate random movement within ±maxMove
+  let randomX = Math.random() * (2 * maxMove) - maxMove;
+  let randomY = Math.random() * (2 * maxMove) - maxMove;
+
+  // Get current position
+  let newLeft = noBtn.offsetLeft + randomX;
+  let newTop = noBtn.offsetTop + randomY;
+
+  // Keep the button inside the container
+  let parentRect = parent.getBoundingClientRect();
+  let btnRect = noBtn.getBoundingClientRect();
+
+  if (newLeft < 0) newLeft = 0;
+  if (newLeft + btnRect.width > parentRect.width)
+    newLeft = parentRect.width - btnRect.width;
+  if (newTop < 0) newTop = 0;
+  if (newTop + btnRect.height > parentRect.height)
+    newTop = parentRect.height - btnRect.height;
+
+  // Apply new position
+  noBtn.style.left = newLeft + "px";
+  noBtn.style.top = newTop + "px";
+}
+
+// Move within 140px when clicked
+noBtn.addEventListener("click", function (event) {
+  event.preventDefault(); // Prevent navigation
+  moveButton(140); // Now moves randomly within 140px
 });
+
+// Move within 100px when hovered (for desktops)
+noBtn.addEventListener("mouseenter", function () {
+  moveButton(100);
+});
+
+// Move within 100px when touched (for mobile)
+noBtn.addEventListener("touchstart", function (event) {
+  event.preventDefault(); // Prevent accidental clicks
+  moveButton(100);
+});
+
+document.body.style.cssText =
+  "overflow: hidden; position: fixed; width: 100vw; height: 100vh; touch-action: none;";
