@@ -34,11 +34,20 @@ body {
   border-radius: 10px;
   overflow: hidden;
   max-width: 200px;
+  width: 200px;
 }
 
 .container .btn {
   display: flex;
   gap: 25px;
+  position: relative;
+}
+.container .btnN {
+  display: flex;
+  gap: 25px;
+  position: relative; /* This makes sure the "No" button moves inside */
+  width: 600px; /* Give enough space */
+  height: 200px; /* Allow movement */
 }
 
 .btn a {
@@ -48,4 +57,39 @@ body {
   padding: 10px 20px;
   background-color: rgb(52, 146, 36);
   border-radius: 10px;
+}
+
+.btnN a {
+  list-style: none;
+  text-decoration: none;
+  color: antiquewhite;
+  padding: 10px 20px;
+  background-color: rgb(52, 146, 36);
+  border-radius: 10px;
+  transition: 0.3s ease;
+  position: absolute;
+}
+
+.btnN a {
+  list-style: none;
+  text-decoration: none;
+  color: antiquewhite;
+  padding: 10px 20px;
+  background-color: rgb(52, 146, 36);
+  border-radius: 10px;
+  transition: 0.3s ease;
+  position: absolute;
+}
+
+.yes-btn {
+  position: static;
+  background-color: green;
+}
+.no-btn {
+  background-color: red;
+  cursor: pointer;
+  position: absolute; /* Enable movement */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); /* Center initially */
 }
