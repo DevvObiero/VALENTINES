@@ -27,7 +27,7 @@ setInterval(changeQuote, 5000); // Change every 5 seconds
 setTimeout(() => {
   const heading = document.querySelector(".change");
   heading.textContent = "I LOVE YOU";
-}, 3000); // 3000 milliseconds = 3 seconds
+}, 5000); // 3000 milliseconds = 3 seconds
 
 const noBtn = document.getElementById("noBtn");
 
