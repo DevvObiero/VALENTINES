@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Cyrene";
+}
+
+@font-face {
+  font-family: "Cyrene";
+  src: url("./Cyrene.otf") format("truetype");
+}
+
+body {
+  font-family: "Cyrene", sans-serif;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(84, 35, 19);
+  color: beige;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  gap: 10px;
+  max-width: 400px;
+  margin: 20px;
+  margin-top: 100px;
+}
+
+.tenor-gif-embed {
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 200px;
+}
+
+.container .btn {
+  display: flex;
+  gap: 25px;
+}
+
+.btn a {
+  list-style: none;
+  text-decoration: none;
+  color: antiquewhite;
+  padding: 10px 20px;
+  background-color: rgb(52, 146, 36);
+  border-radius: 10px;
+}
