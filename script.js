@@ -4,7 +4,7 @@ const quotes = [
   "You are the reason my world is so bright",
   "With you, every day feels like a new adventure",
   "Any day spent with you is my favourite day",
-  "All the better days are thre ones spent with you",
+  "All the better days are the ones spent with you",
   "If i had a flower for every time i thought of you",
   "I'd be walking in a garded of flowers forever",
   "I find you in every song i listen to",
