@@ -12,7 +12,7 @@ const quotes = [
   "I could spend hours lost in your eyes",
   "May i kiss you scars",
   "Your presence is the melody that makes my heart sing",
-  "Your presence is the melody that makes my heart sing"
+  "This website will self-destruct in 2 hours"
 ];
 
 let index = 0;
